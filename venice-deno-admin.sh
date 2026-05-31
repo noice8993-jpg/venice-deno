@@ -1,9 +1,13 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # Venice Deno admin helper
-# Set VENICE_DENO_URL & VENICE_DENO_ADMIN env, atau edit default di bawah.
+# Config dibaca dari .env (di dir script) atau env var:
+#   VENICE_DENO_URL, VENICE_DENO_ADMIN, VENICE_DENO_KEY
 
-URL="${VENICE_DENO_URL:-https://apikey.noice8993-jpg.deno.net}"
-ADMIN="${VENICE_DENO_ADMIN:-REDACTED_OLD_ADMIN_TOKEN}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+[ -f "$SCRIPT_DIR/.env" ] && set -a && . "$SCRIPT_DIR/.env" && set +a
+
+URL="${VENICE_DENO_URL:?Set VENICE_DENO_URL (lihat .env.example)}"
+ADMIN="${VENICE_DENO_ADMIN:?Set VENICE_DENO_ADMIN (lihat .env.example)}"
 
 H_ADMIN="Authorization: Bearer $ADMIN"
 H_JSON="Content-Type: application/json"
@@ -49,7 +53,7 @@ case "$cmd" in
   health)
     curl -s "$URL/" | pretty ;;
   test)
-    KEY="${1:-${VENICE_DENO_KEY:-REDACTED_OLD_KEY2}}"
+    KEY="${1:-${VENICE_DENO_KEY:?Set VENICE_DENO_KEY di .env atau pass sbg arg-1}}"
     MODEL="${2:-llama-3.3-70b}"
     MSG="${3:-halo, jawab singkat: 1+1?}"
     curl -s -X POST "$URL/v1/chat/completions" \
