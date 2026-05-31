@@ -1,5 +1,7 @@
 # Venice Deno Proxy
 
+> Entrypoint: `src/main.ts`
+
 Port dari `venice-cf-worker` ke **Deno Deploy**. Alasan pindah: Cloudflare
 Workers semua egress dari pool IP yang sama → Venice nge-flag bot/fraud (kode
 1015). Deno Deploy pakai range IP berbeda.
