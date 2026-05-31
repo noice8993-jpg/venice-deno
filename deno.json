@@ -1,8 +1,9 @@
 {
+  "unstable": ["kv"],
   "tasks": {
-    "dev": "deno run --unstable-kv --allow-net --allow-env --watch main.ts",
-    "start": "deno run --unstable-kv --allow-net --allow-env main.ts",
-    "deploy": "deployctl deploy --project=venice-deno --prod main.ts"
+    "dev": "deno run --unstable-kv --allow-net --allow-env --watch src/main.ts",
+    "start": "deno run --unstable-kv --allow-net --allow-env src/main.ts",
+    "deploy": "deployctl deploy --project=venice-deno --prod src/main.ts"
   },
   "imports": {}
 }
