@@ -49,7 +49,7 @@ case "$cmd" in
   health)
     curl -s "$URL/" | pretty ;;
   test)
-    KEY="${1:?Usage: $0 test <client-key> [model] [msg]}"
+    KEY="${1:-${VENICE_DENO_KEY:-REDACTED_OLD_KEY2}}"
     MODEL="${2:-llama-3.3-70b}"
     MSG="${3:-halo, jawab singkat: 1+1?}"
     curl -s -X POST "$URL/v1/chat/completions" \
