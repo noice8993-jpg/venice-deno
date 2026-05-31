@@ -2,8 +2,8 @@
 # Venice Deno admin helper
 # Set VENICE_DENO_URL & VENICE_DENO_ADMIN env, atau edit default di bawah.
 
-URL="${VENICE_DENO_URL:-https://venice-deno.deno.dev}"
-ADMIN="${VENICE_DENO_ADMIN:-CHANGE_ME}"
+URL="${VENICE_DENO_URL:-https://apikey.noice8993-jpg.deno.net}"
+ADMIN="${VENICE_DENO_ADMIN:-REDACTED_OLD_ADMIN_TOKEN}"
 
 H_ADMIN="Authorization: Bearer $ADMIN"
 H_JSON="Content-Type: application/json"
